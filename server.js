@@ -15,5 +15,5 @@ app.get("/", (req, res) => {
 app.use("/personagens", personagensRouter);
 
 app.listen(serverPort, () => {
-    console.log(`Servidor funcionando em: http://localhost:${serverPort}`);
+    console.log(`🚀 Servidor funcionando em: http://localhost:${serverPort}`);
 });

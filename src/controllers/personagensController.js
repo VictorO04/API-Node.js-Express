@@ -9,4 +9,21 @@ const getAllPersonagens = (req, res) => {
     });
 }
 
-export {getAllPersonagens}
+const getPersonagensById = (req, res) => {
+    const id = parseInt(req.params.id);
+    const personagem = personagens.find(p => p.id === id);
+
+    if (personagem) {
+        res.status(200).json({
+            success: true,
+            data: personagem
+        });
+    } else {
+        res.status(400).json({
+            success: false,
+            message: `personagem com o ID ${id} não encontrado.`
+        });
+    }
+}
+
+export {getAllPersonagens, getPersonagensById}
