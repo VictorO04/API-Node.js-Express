@@ -1,0 +1,26 @@
+{
+  "name": "api-node-express",
+  "version": "1.0.0",
+  "description": "API RESTful completa feita com Node.js e Express com o tema Nanatsu no Taizai.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cls && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorO04/API-Node-Express.git"
+  },
+  "keywords": ["node.js", "express", "API"],
+  "author": "Victor Ferreira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorO04/API-Node-Express/issues"
+  },
+  "homepage": "https://github.com/VictorO04/API-Node-Express#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
