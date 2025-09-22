@@ -26,6 +26,23 @@ const getPersonagemById = (req, res) => {
     }
 }
 
+const getByNamePersonagens = (req, res) => {
+    const nome = req.params.nome.toLowerCase();
+    const personagensEncontrados = personagens.filter(p => p.nome.toLowerCase().includes(nome));
+
+    if (personagensEncontrados.length > 0) {
+        res.status(200).json({
+            success: true,
+            data: personagensEncontrados
+        }); 
+    } else {
+        res.status(404).json({
+            success: false,
+            message: `Personagem com o nome ${nome} não encontrado`
+        });
+    }
+}
+
 const createPersonagem = (req, res) => {
     const { nome, raca, habilidades, afiliacao } = req.body;
 
@@ -188,4 +205,4 @@ const updatePersonagem = (req, res) => {
     });
 }
 
-export {getAllPersonagens, getPersonagemById, createPersonagem, deletePersonagem, updatePersonagem}
+export {getAllPersonagens, getPersonagemById, getByNamePersonagens, createPersonagem, deletePersonagem, updatePersonagem}
