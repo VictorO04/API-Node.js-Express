@@ -1,10 +1,11 @@
 import express from "express";
-import {getAllPersonagens, getPersonagensById, createPersonagem} from "../controllers/personagensController.js";
+import {getAllPersonagens, getPersonagemById, createPersonagem, deletePersonagem} from "../controllers/personagensController.js";
 
 const router = express.Router();
 
 router.get("/", getAllPersonagens);
-router.get("/:id", getPersonagensById);
+router.get("/:id", getPersonagemById);
 router.post("/", createPersonagem);
+router.delete("/:id", deletePersonagem);
 
 export default router;

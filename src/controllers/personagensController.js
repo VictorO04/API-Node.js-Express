@@ -9,7 +9,7 @@ const getAllPersonagens = (req, res) => {
     });
 }
 
-const getPersonagensById = (req, res) => {
+const getPersonagemById = (req, res) => {
     const id = parseInt(req.params.id);
     const personagem = personagens.find(p => p.id === id);
 
@@ -19,7 +19,7 @@ const getPersonagensById = (req, res) => {
             data: personagem
         });
     } else {
-        res.status(400).json({
+        res.status(404).json({
             success: false,
             message: `personagem com o ID ${id} não encontrado`
         });
@@ -93,4 +93,35 @@ const createPersonagem = (req, res) => {
     });
 }
 
-export {getAllPersonagens, getPersonagensById, createPersonagem}
+const deletePersonagem = (req, res) => {
+    const {id} = req.params;
+
+    if (isNaN(id)) {
+        return res.status(400).json({
+            success: false,
+            message: "O ID deve ser válido"
+        });
+    }
+
+    const idParaApagar = parseInt(id);
+
+    const personagemParaApagar = personagens.find(p => p.id === idParaApagar);
+
+    if (!personagemParaApagar) {
+        return res.status(404).json({
+            success: false,
+            message: `personagem com este ID não existe`
+        });
+    }
+
+    const personagemFiltrado = personagens.filter(p => p.id !== idParaApagar);
+
+    personagens.splice(0, personagens.length, ...personagemFiltrado);
+
+    return res.status(200).json({
+        success: true,
+        message: "O personagem foi removido com sucesso"
+    });
+}
+
+export {getAllPersonagens, getPersonagemById, createPersonagem, deletePersonagem}
